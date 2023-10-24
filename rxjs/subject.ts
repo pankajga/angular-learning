@@ -5,6 +5,8 @@ A Subject is like an Observable, but can multicast to many Observers. Subjects a
 
   https://rxjs.dev/guide/subject
 
+
+// https://stackoverflow.com/questions/43348463/what-is-the-difference-between-subject-and-behaviorsubject
 A BehaviorSubject holds one value. When it is subscribed it emits the value immediately. A Subject doesn't hold a value.
 
 Subject example (with RxJS 5 API):
