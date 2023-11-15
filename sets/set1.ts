@@ -4,3 +4,4 @@
 # var vs let vs const
 # parent child data communication
 # flex vs grid in css
+# flatmap vs switchmap vs concatmap
