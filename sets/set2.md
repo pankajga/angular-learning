@@ -1,4 +1,4 @@
-#### What is hoisting ?
+# What is hoisting ?
 JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code.
 // Hoisting is JavaScript's default behavior of moving declarations to the top.
 // In JavaScript, a variable can be declared after it has been used.
@@ -7,7 +7,7 @@ JavaScript Hoisting refers to the process whereby the interpreter appears to mov
 
 // Example 1 gives the same result as Example 2:
 
-## Example 1
+### Example 1
 ```
 x = 5; // Assign 5 to x
 
@@ -17,7 +17,7 @@ elem.innerHTML = x;                     // Display x in the element
 var x; // Declare x
 ```
 
-## Example 2
+### Example 2
 ```
 var x; // Declare x
 x = 5; // Assign 5 to x
@@ -65,9 +65,9 @@ var y = 7; // Initialize y
 ```
 Does it make sense that y is undefined in the last example?
 
-## This is because only the declaration (var y), not the initialization (=7) is hoisted to the top.
+### This is because only the declaration (var y), not the initialization (=7) is hoisted to the top.
 
-## Because of hoisting, y has been declared before it is used, but because initializations are not hoisted, the value of y is undefined.
+### Because of hoisting, y has been declared before it is used, but because initializations are not hoisted, the value of y is undefined.
 
 Using a const variable before it is declared, is a syntax error, so the code will simply not run.
 
@@ -81,27 +81,27 @@ const carName;
 ## It is just moving the declaration to the top of undefined value, which is later initialized to some value.
 ## In case of let and const Hoisting is done, but not initialized,,this is the reason for the error when we access the let variable before declaration/initialization
 
-#### var vs let vs const
+# var vs let vs const
 var	let	const
-# The scope of a var variable is functional scope.	
-# The scope of a let variable is block scope.	
-# The scope of a const variable is block scope.
+### The scope of a var variable is functional scope.	
+### The scope of a let variable is block scope.	
+### The scope of a const variable is block scope.
 
-# It can be updated and re-declared into the scope.	
-# It can be updated but cannot be re-declared into the scope.	
-# It cannot be updated or re-declared into the scope.
+### It can be updated and re-declared into the scope.	
+### It can be updated but cannot be re-declared into the scope.	
+### It cannot be updated or re-declared into the scope.
 
-# It can be declared without initialization.	
-# It can be declared without initialization.	
-# It cannot be declared without initialization.
+### It can be declared without initialization.	
+### It can be declared without initialization.	
+### It cannot be declared without initialization.
 
-# It can be accessed without initialization as its default value is “undefined”.	
-# It cannot be accessed without initialization otherwise it will give ‘referenceError’.	
-# It cannot be accessed without initialization, as it cannot be declared without initialization.
+### It can be accessed without initialization as its default value is “undefined”.	
+### It cannot be accessed without initialization otherwise it will give ‘referenceError’.	
+### It cannot be accessed without initialization, as it cannot be declared without initialization.
 
-# hoisting done, with initializing as ‘default’ value	
-# Hoisting is done, but not initialized (this is the reason for the error when we access the let variable before declaration/initialization	
-# Hoisting is done, but not initialized (this is the reason for the error when we access the const variable before declaration/initialization
+### hoisting done, with initializing as ‘default’ value	
+### Hoisting is done, but not initialized (this is the reason for the error when we access the let variable before declaration/initialization	
+### Hoisting is done, but not initialized (this is the reason for the error when we access the const variable before declaration/initialization
 
 ```
 var greeter = 'hey hi';
@@ -125,8 +125,9 @@ if (true) {
     let hello = 'say hello instead';
 }
 console.log(hello); // Reference error hello is not defined
+```
 
-#### What is scope and types of scope in JS ?
+# What is scope and types of scope in JS ?
 Block scope
 Function scope
 Global scope
