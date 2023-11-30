@@ -186,3 +186,235 @@ function myFunction() {
 // code here can also use carName
 }
 ```
+
+
+```
+let emp = [
+    {
+        "name": "abc",
+        "age": 30
+    },
+    {
+        "name": "xyz",
+        "age": 20
+    },
+    {
+        "name": "cde",
+        "age": 25
+    },
+    {
+        "name": "fgh",
+        "age": 28
+    }
+]
+
+const result = emp.filter((value) => {
+    return value.age < 26;
+})
+
+const app = document.getElementById('app');
+
+result.map((value) => {
+    console.log('value.name');
+})
+
+result.map(({map, age}) => {
+    const dataToShow = `${name} : ${age}`
+    console.log('data => dataToShow');
+    app.innerHTML = dataToShow // will only print latest
+    app.appendChild = `<p> ${dataToShow} </p>;
+})
+```
+
+# Q. Add an click event in JS ?
+
+```
+const divSelect = document.getElementById('app');
+divSelect.addEventListener('click', () => {
+    console.log('Hello');
+});
+```
+
+# Q. Error handling
+We can use try catch block to handle errors in JS & Angular.
+Similar to the Exception class, we have ErrorHandler in Angular and we can create custom error handler by implementing the above error handler.
+
+```
+class MyErrorHandler implements ErrorHandler {
+  handleError(error) {
+    // do something with the exception
+  }
+}
+
+@NgModule({
+  providers: [{provide: ErrorHandler, useClass: MyErrorHandler}]
+})
+class MyModule {}
+```
+
+
+# Q. What is a Promise ?
+In JavaScript, a Promise is an object that will produce a single value some time in the future. If the promise is successful, it will produce a resolved value, but if something goes wrong then it will produce a reason why the promise failed. The possible outcomes here are similar to that of promises in real life.
+pending: This is the default state of a defined promise
+fulfilled:  This is the state of a successful promise
+rejected: This is the state of a failed promise
+
+```
+const promise = new Promise((resolve, reject) => {
+    let value = 5;
+    if (value < 4) {
+        resolve(`Value is less than 4`);
+    } else {
+        reject(`Value is greater than 4`);
+    }
+});
+
+promise.then((result) => {
+    console.log(result);
+})
+.catch((error) => console.log('error:',error));
+```
+
+
+# Q. What is a Prototype ?
+
+Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.
+
+All JavaScript objects inherit properties and methods from a prototype.
+
+In the previous chapter we learned how to use an object constructor:
+```
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+const myFather = new Person("John", "Doe", 50, "blue");
+const myMother = new Person("Sally", "Rally", 48, "green");
+```
+
+We also learned that you can not add a new property to an existing object constructor:
+```
+Example
+Person.nationality = "English";
+```
+
+To add a new property to a constructor, you must add it to the constructor function:
+```
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+  this.nationality = "English";
+}
+```
+
+## Prototype Inheritance
+
+All JavaScript objects inherit properties and methods from a prototype:
+
+Date objects inherit from Date.prototype
+Array objects inherit from Array.prototype
+Person objects inherit from Person.prototype
+The Object.prototype is on the top of the prototype inheritance chain:
+
+Date objects, Array objects, and Person objects inherit from Object.prototype.
+
+Adding Properties and Methods to Objects
+Sometimes you want to add new properties (or methods) to all existing objects of a given type.
+
+Sometimes you want to add new properties (or methods) to an object constructor.
+
+Using the prototype Property
+The JavaScript prototype property allows you to add new properties to object constructors:
+
+```
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.nationality = "English";
+```
+
+The JavaScript prototype property also allows you to add new methods to objects constructors:
+```
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+```
+
+
+# Q. Class Inheritance in JS ?
+Class Inheritance
+To create a class inheritance, use the extends keyword.
+
+A class created with a class inheritance inherits all the methods from another class:
+
+Example
+Create a class named "Model" which will inherit the methods from the "Car" class:
+```
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present() {
+    return 'I have a ' + this.carname;
+  }
+}
+
+class Model extends Car {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + ', it is a ' + this.model;
+  }
+}
+
+let myCar = new Model("Ford", "Mustang");
+document.getElementById("demo").innerHTML = myCar.show();
+```
+
+The super() method refers to the parent class.
+
+By calling the super() method in the constructor method, we call the parent's constructor method and gets access to the parent's properties and methods.
+
+
+# Q. What is closure ?
+Closures
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+Lexical scoping
+Consider the following example code:
+
+```
+function init() {
+  var name = "Mozilla"; // name is a local variable created by init
+  function displayName() {
+    // displayName() is the inner function, that forms the closure
+    console.log(name); // use variable declared in the parent function
+  }
+  displayName();
+}
+init();
+```
+
+init() creates a local variable called name and a function called displayName(). The displayName() function is an inner function that is defined inside init() and is available only within the body of the init() function. Note that the displayName() function has no local variables of its own. However, since inner functions have access to the variables of outer functions, displayName() can access the variable name declared in the parent function, init().
