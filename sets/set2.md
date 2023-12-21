@@ -418,3 +418,24 @@ init();
 ```
 
 init() creates a local variable called name and a function called displayName(). The displayName() function is an inner function that is defined inside init() and is available only within the body of the init() function. Note that the displayName() function has no local variables of its own. However, since inner functions have access to the variables of outer functions, displayName() can access the variable name declared in the parent function, init().
+
+
+# What is ViewEncapsulation ?
+
+View encapsulation
+In Angular, a component's styles can be encapsulated within the component's host element so that they don't affect the rest of the application.
+
+The Component decorator provides the encapsulation option which can be used to control how the encapsulation is applied on a per component basis.
+
+Choose from the following modes:
+
+
+MODES	DETAILS
+### ViewEncapsulation.ShadowDom	
+Angular uses the browser's built-in Shadow DOM API to enclose the component's view inside a ShadowRoot, used as the component's host element, and apply the provided styles in an isolated manner.
+
+### ViewEncapsulation.Emulated	
+Angular modifies the component's CSS selectors so that they are only applied to the component's view and do not affect other elements in the application, emulating Shadow DOM behavior. For more details, see Inspecting generated CSS.
+
+### ViewEncapsulation.None	
+Angular does not apply any sort of view encapsulation meaning that any styles specified for the component are actually globally applied and can affect any HTML element present within the application. This mode is essentially the same as including the styles into the HTML itself.
