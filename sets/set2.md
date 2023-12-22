@@ -420,7 +420,7 @@ init();
 init() creates a local variable called name and a function called displayName(). The displayName() function is an inner function that is defined inside init() and is available only within the body of the init() function. Note that the displayName() function has no local variables of its own. However, since inner functions have access to the variables of outer functions, displayName() can access the variable name declared in the parent function, init().
 
 
-# What is ViewEncapsulation ?
+# Q. What is ViewEncapsulation ?
 
 View encapsulation
 In Angular, a component's styles can be encapsulated within the component's host element so that they don't affect the rest of the application.
@@ -441,7 +441,7 @@ Angular modifies the component's CSS selectors so that they are only applied to 
 Angular does not apply any sort of view encapsulation meaning that any styles specified for the component are actually globally applied and can affect any HTML element present within the application. This mode is essentially the same as including the styles into the HTML itself.
 
 
-# flatmap vs switchmap vs concatmap
+# Q. flatmap vs switchmap vs concatmap
 switchMap, mergeMap, concatMap and exhaustMap are rxjs flattening operatators.
 https://dev.to/hssanbzlm/switchmap-mergemap-concatmap-and-exhaustmap-like-you-have-never-seen-109o
 ### Merge Map
