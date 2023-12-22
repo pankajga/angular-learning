@@ -439,3 +439,16 @@ Angular modifies the component's CSS selectors so that they are only applied to 
 
 ### ViewEncapsulation.None	
 Angular does not apply any sort of view encapsulation meaning that any styles specified for the component are actually globally applied and can affect any HTML element present within the application. This mode is essentially the same as including the styles into the HTML itself.
+
+
+# flatmap vs switchmap vs concatmap
+switchMap, mergeMap, concatMap and exhaustMap are rxjs flattening operatators.
+https://dev.to/hssanbzlm/switchmap-mergemap-concatmap-and-exhaustmap-like-you-have-never-seen-109o
+### Merge Map
+won't wait for the first observable to complete before starting with the second.
+### Concat Map
+will wait for the first observable to complete, then will start the second observable.
+### Switch Map
+will return only the latest observable not previous, other features similar to concat.
+### Exhaust Map
+will only pick the first observable and ignore all others.
