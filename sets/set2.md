@@ -452,3 +452,86 @@ will wait for the first observable to complete, then will start the second obser
 will return only the latest observable not previous, other features similar to concat.
 ### Exhaust Map
 will only pick the first observable and ignore all others.
+
+
+# Q. Lazy Loading in Angular ?
+### Lazy-loading feature modules
+https://angular.io/guide/lazy-loading-ngmodules#config-routes
+By default, NgModules are eagerly loaded. This means that as soon as the application loads, so do all the NgModules, whether they are immediately necessary or not. For large applications with lots of routes, consider lazy loading —a design pattern that loads NgModules as needed. Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrease load times.
+
+```
+ng generate module customers --route customers --module app.module
+```
+
+```
+<h1>
+  {{title}}
+</h1>
+
+<button type="button" routerLink="/customers">Customers</button>
+<button type="button" routerLink="/orders">Orders</button>
+<button type="button" routerLink="">Home</button>
+
+<router-outlet></router-outlet>
+```
+
+```
+src/app/app-routing.module.ts
+
+const routes: Routes = [
+  {
+    path: 'customers',
+    loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)
+  },
+  {
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  }
+];
+```
+
+```
+src/app/customers/customers.module.ts
+
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CustomersRoutingModule } from './customers-routing.module';
+import { CustomersComponent } from './customers.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    CustomersRoutingModule
+  ],
+  declarations: [CustomersComponent]
+})
+export class CustomersModule { }
+```
+
+```
+src/app/customers/customers-routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { CustomersComponent } from './customers.component';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    component: CustomersComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class CustomersRoutingModule { }
+```
